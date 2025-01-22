@@ -162,7 +162,7 @@ const MainContent = () => {
                             >{page}</button>))}
                     </div>
 
-                    {/* next button pushing*/}
+                    {/* next button */}
                     <button
                         className="border px-4 py-2 mx-2 rounded-full"
                         onClick={() => handlePageChange(currentPage + 1)}

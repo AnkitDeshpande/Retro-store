@@ -44,7 +44,7 @@ const MainContent = () => {
 
         if (selectedCategory) {
             filteredProducts = filteredProducts.filter((product) => product.category === selectedCategory);
-            console.log(filteredProducts)
+            //console.log(filteredProducts)
         }
 
         if (minPrice) {
@@ -59,6 +59,7 @@ const MainContent = () => {
             filteredProducts = filteredProducts.filter((product) => product.title.toLowerCase().includes(searchQuery.toLowerCase()));
         }
 
+        //console.log(filteredProducts);
         switch (filter) {
             case 'cheap':
                 filteredProducts = filteredProducts.sort((a, b) => a.price - b.price);
@@ -72,6 +73,7 @@ const MainContent = () => {
             default:
                 return filteredProducts;
         }
+        return filteredProducts;
     }
 
     const handlePageChange = (page: number) => {
@@ -85,15 +87,14 @@ const MainContent = () => {
         const buttons: number[] = [];
 
         let startPage = Math.max(1, currentPage - 2);
-
         let endPage = Math.min(totalPages, currentPage + 2);
 
-        if (currentPage - 2 < 1) {
-            endPage = Math.min(totalPages, endPage + (2 - currentPage - 1));
+        if (currentPage <= 2) {
+            endPage = Math.min(5, totalPages);
         }
 
-        if (currentPage + 2 > totalPages) {
-            startPage = Math.min(1, startPage - (2 - totalPages - currentPage));
+        if (currentPage >= totalPages - 1) {
+            startPage = Math.max(totalPages - 4, 1);
         }
 
         for (let i = startPage; i <= endPage; i++) {
@@ -104,14 +105,14 @@ const MainContent = () => {
     }
 
     const filteredProducts = getFilteredProducts();
-    console.log(filteredProducts);
+    //console.log(filteredProducts);
 
     return (
         <section className="xl:w-[55rem] lg:w-[55rem] sm:w-[40rem] xs:w-[20rem] p-5">
             <div className="mb-5">
                 <div className="flex flex-col sm:flex-row justify-between items-center">
                     <div className="relative mb-5 mt-5">
-                        <button className="border px-4 py-2 rounded-full flex items-center">
+                        <button onClick={() => setDropdownOpen(!dropdownOpen)} className="border px-4 py-2 rounded-full flex items-center">
                             <Tally3 className="mr-2" />
 
                             {filter === 'all' ? 'Filter' : filter.charAt(0).toLowerCase() + filter.slice(1)}

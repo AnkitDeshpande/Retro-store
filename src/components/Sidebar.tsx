@@ -10,9 +10,9 @@ const Sidebar = () => {
 		selectedCategory, setSelectedCategory,
 		minPrice, setMinPrice,
 		maxPrice, setMaxPrice,
-		keyword, setKeyword } = useFilter();
+		setKeyword } = useFilter();
 	const [categories, setCategories] = useState<string[]>([]);
-	const [keywords, setKeywords] = useState<string[]>([
+	const [keywords] = useState<string[]>([
 		"apple",
 		"watch",
 		"fashion",
@@ -126,6 +126,7 @@ const Sidebar = () => {
 						<button
 							type="button"
 							name="keyword"
+							value={keyword}
 							className="mr-2 w-[16px] h-[16px]"
 							onClick={() => handleKeywordClick(keyword)}
 						>{keyword.toUpperCase()}</button>

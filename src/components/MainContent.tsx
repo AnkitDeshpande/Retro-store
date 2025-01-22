@@ -17,10 +17,9 @@ const MainContent = () => {
     const [filter, setFilter] = useState<string>('all');
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
-    const [itemsPerPage, setItemsPerPage] = useState<number>(12);
+    const [itemsPerPage] = useState<number>(12);
     const [totalProducts, setTotalProducts] = useState<number>(0);
     const totalPages = Math.ceil(totalProducts / itemsPerPage);
-    const URL = `https://dummyjson.com/products`
     useEffect(() => {
         // fetch products
         let URL = `https://dummyjson.com/products?limit=${itemsPerPage}&skip=${(currentPage - 1) * itemsPerPage}`;

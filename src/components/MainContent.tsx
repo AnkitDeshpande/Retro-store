@@ -2,6 +2,7 @@ import axios from "axios";
 import { Tally3 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useFilter } from "../hooks/useFilter";
+import Product from "../types/Product";
 import Card from "./Card";
 
 const MainContent = () => {
@@ -13,7 +14,7 @@ const MainContent = () => {
         keyword
     } = useFilter();
 
-    const [products, setProducts] = useState<any[]>([]);
+    const [products, setProducts] = useState<Product[]>([]);
     const [filter, setFilter] = useState<string>('all');
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);

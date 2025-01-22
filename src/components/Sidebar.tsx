@@ -123,14 +123,13 @@ const Sidebar = () => {
 			<div>
 				{keywords.map((keyword, index) => (
 					<label key={index} className="block mb-2 px-4 py-2 hover:bg-gray-200 rounded">
-						<input
-							type="checkbox"
+						<button
+							type="button"
 							name="keyword"
-							value={keyword}
 							className="mr-2 w-[16px] h-[16px]"
 							onClick={() => handleKeywordClick(keyword)}
-						/>
-						{keyword.toUpperCase()}
+						>{keyword.toUpperCase()}</button>
+
 					</label>
 				))}
 			</div>

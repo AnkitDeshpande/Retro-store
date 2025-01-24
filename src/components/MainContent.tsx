@@ -2,7 +2,6 @@ import axios from "axios";
 import { Tally3 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useFilter } from "../hooks/useFilter";
-import Product from "../types/Product";
 import Card from "./Card";
 
 const MainContent = () => {
@@ -14,13 +13,14 @@ const MainContent = () => {
         keyword
     } = useFilter();
 
-    const [products, setProducts] = useState<Product[]>([]);
+    const [products, setProducts] = useState<any[]>([]);
     const [filter, setFilter] = useState<string>('all');
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
-    const [itemsPerPage] = useState<number>(12);
+    const [itemsPerPage, setItemsPerPage] = useState<number>(12);
     const [totalProducts, setTotalProducts] = useState<number>(0);
     const totalPages = Math.ceil(totalProducts / itemsPerPage);
+    const URL = `https://dummyjson.com/products`
     useEffect(() => {
         // fetch products
         let URL = `https://dummyjson.com/products?limit=${itemsPerPage}&skip=${(currentPage - 1) * itemsPerPage}`;
